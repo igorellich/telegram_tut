@@ -1,0 +1,23 @@
+{
+  "name": "telegram_tut",
+  "version": "1.0.0",
+  "description": "telegramm bot education project",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/igorellich/telegram_tut.git"
+  },
+  "keywords": [
+    "telegramm",
+    "bot"
+  ],
+  "author": "merculov",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/igorellich/telegram_tut/issues"
+  },
+  "homepage": "https://github.com/igorellich/telegram_tut#readme"
+}
