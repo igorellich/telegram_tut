@@ -19,5 +19,8 @@
   "bugs": {
     "url": "https://github.com/igorellich/telegram_tut/issues"
   },
-  "homepage": "https://github.com/igorellich/telegram_tut#readme"
+  "homepage": "https://github.com/igorellich/telegram_tut#readme",
+  "devDependencies": {
+    "typescript": "^5.4.5"
+  }
 }
