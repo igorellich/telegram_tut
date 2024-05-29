@@ -26,6 +26,7 @@ class Bot{
             if (process.env.PROD) {
                 console.log("prod branch");
                 console.log("port:" + process.env.PORT);
+                console.log("URL:" + process.env.URL);
                 const cb: RequestListener = (req, res) => {
                     res.end(`OK`);
                 }
