@@ -5,6 +5,7 @@ import { RequestListener } from "http";
 import { IBotContext } from "./context/IBotContext";
 import { Command } from "./commands/command";
 import { StartCommand } from "./commands/startCommand";
+import { GPTCommand } from "./commands/gPTCommand";
 
 class Bot{
     bot: Telegraf<IBotContext>;
@@ -19,7 +20,7 @@ class Bot{
     init() {
         try {
             console.log(process.env);
-            this.commands= [new StartCommand(this.bot)];
+            this.commands= [new StartCommand(this.bot), new GPTCommand(this.bot)];
             for(const command of this.commands){
                 command.handle();
             }
