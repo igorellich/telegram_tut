@@ -36,6 +36,7 @@
   "dependencies": {
     "axios": "^1.7.2",
     "dotenv": "^16.4.5",
+    "openai": "^4.47.2",
     "telegraf": "^4.16.3",
     "ts-node": "^10.9.2"
   }
