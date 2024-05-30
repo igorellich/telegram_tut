@@ -1,8 +1,7 @@
-import axios from 'axios';
 import * as dotenv from 'dotenv';
+import OpenAI from 'openai';
 
 
-const { Configuration, OpenAIApi } = require("openai");
 
 dotenv.config();
 
@@ -12,35 +11,19 @@ if (!OPENAI_API_KEY) {
   throw new Error('Missing OpenAI API key in environment variables');
 }
 
-const apiEndpoint = 'https://api.openai.com/v1/engines/davinci-codex/completions';
-
-
-
 export async function getChatGPTResponse(prompt: string): Promise<string> {
-  const newConfig = new Configuration({
-    apiKey: process.env.OPENAI_API_KEY
+  const openai = new OpenAI({
+    apiKey: process.env['OPENAI_API_KEY'], // This is the default and can be omitted
   });
-  const openai = new OpenAIApi(newConfig);
 
-  const messageList = [{ role: "user", content: prompt }];
   let result: string = "";
-  try {
-    const GPTOutput = await openai.createChatCompletion({
-      model: "gpt-3.5-turbo",
-      messages: messageList,
-    });
-
-    result = GPTOutput.data.choices[0].message.content;
-
-
-
-  } catch (err: any) {
-    if (err.response) {
-      console.log(err.response.status);
-      console.log(err.response.data);
-    } else {
-      console.log(err.message);
-    }
+  const stream = await openai.chat.completions.create({
+    model: 'gpt-4',
+    messages: [{ role: 'user', content: prompt }],
+    stream: true,
+  });
+  for await (const chunk of stream) {
+    result+=(chunk.choices[0]?.delta?.content || '');
   }
   return result;
 }
