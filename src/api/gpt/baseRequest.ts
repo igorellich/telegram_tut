@@ -18,7 +18,7 @@ const apiEndpoint = 'https://api.openai.com/v1/engines/davinci-codex/completions
 
 export async function getChatGPTResponse(prompt: string): Promise<string> {
   const newConfig = new Configuration({
-    apiKey: process.env.OPENAI_SECRET_KEY
+    apiKey: process.env.OPENAI_API_KEY
   });
   const openai = new OpenAIApi(newConfig);
 
