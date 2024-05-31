@@ -15,12 +15,13 @@ export async function getChatGPTResponse(prompt: string): Promise<string> {
   const openai = new OpenAI({
     apiKey: process.env['OPENAI_API_KEY_DISCORD'], // This is the default and can be omitted
     //apiKey:process.env['OPENAI_API_KEY'],
-    baseURL:"https:api.pawan.krd/v1"
+    baseURL:"https:api.pawan.krd/gpt-3.5-unfiltered/v1"
   });
 
   let result: string = "";
   const stream = await openai.chat.completions.create({
-    model: "pai-001",
+    //model: "pai-001",
+    "model":"gpt-3.5-unfiltered",
     //model: 'gpt-3.5-turbo',
     messages: [{ role: 'user', content: prompt }],
     stream: true,
